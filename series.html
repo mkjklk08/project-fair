@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse series</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+
+            .header{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                background-color: black;
+                padding: 10px 30px;
+
+                #burger{
+                    display: none;
+                }
+
+                #account{
+                    display: none;
+                }
+
+                .header1{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 30px;
+                    
+                    .search{
+                        background-color: rgb(28, 28, 28);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 6px 10px;
+                        border: 1px rgb(55, 55, 55) solid;
+                        border-radius: 5px;
+
+                        input{
+                            margin-left: 20px;
+                            background-color: rgb(28, 28, 28);
+                            border: none;
+                            width: 530px;
+                            color: rgb(180, 180, 180);
+                            font-size: 15px;
+                        }
+                    }
+
+                    .menu{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        
+                        a{
+                            color: rgba(255, 255, 255, 0.777);
+                            text-decoration: none;
+                            font-size: 14px;
+                        }
+
+                        a:hover{
+                            text-decoration: underline;
+                            color: white;
+                        }
+                    }
+                }
+
+                .header2{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    .register{
+                        background-color: black;
+                        padding: 5px 20px;
+                        border: none;
+                        
+                        a{
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                    }
+
+                    .login{
+                        background-color: rgb(255, 191, 0);
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+
+                        a{
+                            color: black;
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .login:hover{
+                        background-color: rgb(212, 160, 1);
+                    }
+                }
+            }
+
+            .section1half{
+                background-color: rgb(28, 28, 28);
+                padding: 10px 120px;
+                gap: 30px;
+
+                .film-about{
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: 30px;
+                    color: white;
+
+                    h1{
+                        font-size: 40px;
+                        color: white;
+                        font-weight: 700;
+                    }
+
+                    .description{
+                        font-size: 20px;
+                        width: 600px;
+                    }
+
+                    button{
+                        background-color: rgb(255, 191, 0);
+                        font-size: 15px;
+                        padding: 10px 20px;
+                        font-weight: 700;
+                        border: none;
+                        border-radius: 5px;
+                    }
+                }
+                
+
+                img{
+                    width: 200px;
+                    margin-right: 30px;
+                }
+            }
+
+
+            .section1{
+                background-color: rgb(28, 28, 28);
+                padding: 30px 120px;
+                h1{
+                    margin: 0;
+                    color: white;
+                    font-size: 30px;
+                    font-weight: 100;
+                    border-left: 5px rgb(255, 191, 0) solid;
+                    padding-left: 10px;
+                }
+
+                .section1-container{
+                    display: grid;
+                    grid-template-columns: repeat(5, 250px);
+                    gap: 10px;
+                    margin-top: 40px;
+                }
+            }
+
+            .footer {
+                background-color: rgb(28, 28, 28);
+                padding: 200px 120px 20px 120px;
+
+                .footer1{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    ul{
+                        margin: 0;
+                        list-style: none;
+                        padding: 0;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+
+                        li{
+                            color: rgb(255, 191, 0);
+                            font-size: 15px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    p{
+                        color: rgb(180, 180, 180);
+                        font-size: 14px;
+                    }
+                }
+
+                .hr{
+                    margin: 0;
+                }
+
+                .footer2{
+                    color: rgb(180, 180, 180);
+                    font-size: 14px;
+                    margin-top: 30px;
+                }
+
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            body{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+
+                .header{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: black;
+                    padding: 10px 30px;
+
+
+                    .logo{
+                        width: 60px;
+                    }
+
+                    #burger{
+                        display: block;
+                    }
+
+                    #account{
+                        display: block;
+                        margin-right: 20px;
+                    }
+
+                    .header1{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 20px;
+                        
+                        .search{
+                            display: none;
+                        }
+
+                        .menu{
+                            position: absolute;
+                            background-color: black;
+                            top: 50px;
+                            left: 80px;
+                            padding: 20px;
+                            gap: 30px;
+                            display: none;
+                            
+                            a{
+                                color: rgba(255, 255, 255, 0.777);
+                                text-decoration: none;
+                                font-size: 14px;
+                            }
+
+                            a:hover{
+                                text-decoration: underline;
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .header2{
+                        align-items: center;
+                        gap: 20px;
+                        position: absolute;
+                        top: 50px;
+                        right: 0;
+                        background-color: black;
+                        padding: 20px;
+                        display: none;
+
+                        .register{
+                            background-color: black;
+                            padding: 5px 20px;
+                            border: none;
+                            
+                            a{
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .login{
+                            background-color: rgb(255, 191, 0);
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+
+                            a{
+                                color: black;
+                                font-weight: 700;
+                                font-size: 14px;
+                            }
+                        }
+
+                        .login:hover{
+                            background-color: rgb(212, 160, 1);
+                        }
+                    }
+                }
+
+                .section1{
+                    background-color: rgb(28, 28, 28);
+                    padding: 40px 15px;
+
+
+                    h1{
+                        margin: 0;
+                        color: white;
+                        font-size: 30px;
+                        font-weight: 100;
+                        border-left: 5px rgb(255, 191, 0) solid;
+                        padding-left: 10px;
+                    }
+
+
+                    .section1-container{
+                        display: grid;
+                        grid-template-columns: repeat(1, 300px);
+                        place-content: center;
+                        gap: 10px;
+                        margin-top: 40px;
+                    }
+            
+                }
+
+                .footer {
+                    background-color: rgb(28, 28, 28);
+                    padding: 200px 15px 20px 15px;
+
+                    .footer1{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        ul{
+                            margin: 0;
+                            list-style: none;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 30px;
+
+                            li{
+                                color: rgb(255, 191, 0);
+                                font-size: 15px;
+                                cursor: pointer;
+                            }
+                        }
+
+                        p{
+                            color: rgb(180, 180, 180);
+                            font-size: 14px;
+                        }
+                    }
+
+                    .hr{
+                        margin: 0;
+                    }
+
+                    .footer2{
+                        color: rgb(180, 180, 180);
+                        font-size: 14px;
+                        margin-top: 30px;
+                    }
+
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header1">
+            <a href="homepage.html"><img src="images/logo.svg" alt="" width="80px"  class="logo"></a>
+
+            <div class="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="rgb(180, 180, 180)" class="bi bi-search" viewBox="0 0 16 16"  id="search-btn">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                <input type="text" placeholder="Search for movies, tv shows and people..." class="input-search">
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="white" class="bi bi-list" viewBox="0 0 16 16" id="burger">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+            <div class="menu">
+                <a href="movies.html">Movies</a>
+                <a href="series.html">Series</a>
+                <a href="actors.html">People</a>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16" id="account">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+        <div class="header2">
+            <button class="register"><a href="register.html" style="text-decoration: none;">Register</a></button>
+            <button class="login"><a href="login.html" style="text-decoration: none;">Login</a></button>
+        </div>
+    </header>
+
+    <div class="section1half">
+
+    </div>
+
+    <section class="section1">
+        <h1>Browse Series</h1>
+
+        <div class="section1-container"></div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer1">
+            <ul>
+                <li>About Us</li>
+                <li>Terms of Service</li>
+                <li>Privacy Policy</li>
+                <li>Contact Us</li>
+            </ul>
+            <p>We Are The Database</p>
+        </div>
+        <hr class="hr">
+        <div class="footer2">
+            <p>Copyright © 2025 MovieDb, All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        const burger = document.getElementById('burger')
+        const menu = document.querySelector('.menu')
+
+        burger.addEventListener('click', function() {
+            if (menu.style.display === "none") {
+                menu.style.display = 'block';
+                menu.style.display = 'flex';
+                menu.style.flexDirection = 'column';
+
+            } else{
+                menu.style.display = 'none'
+            }
+        })
+
+        const account = document.getElementById('account');
+        const header2 = document.querySelector('.header2');
+
+        account.addEventListener('click', function() {
+            if (header2.style.display === 'none'){
+                header2.style.display = 'block';
+                header2.style.display = 'flex';
+                header2.style.flexDirection = 'column';
+            } else {
+                header2.style.display = 'none'
+            }
+        })
+
+        const api1 = 'https://api.tvmaze.com/shows?page=0';
+
+        async function series(){
+            const promise = await fetch(api1);
+            const responce = await promise.json();
+            console.log(responce);
+
+            for (let i=0; i<responce.length; i++) {
+                const section1 = document.querySelector('.section1-container')
+
+                section1.innerHTML += `
+                    <div>
+                        <img src="${responce[i].image.medium}" style="width: 250px; border-radius: 5px;">
+                        <p style="margin: 5px 0;color:white; font-size: 17px">${responce[i].rating.average} / 10</p>
+                        <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 16px;">${responce[i].name}</p>
+                    </div>
+                `
+            }
+
+
+            const searchBtn = document.getElementById('search-btn');
+            const inputSearch = document.querySelector('.input-search')
+
+            searchBtn.addEventListener('click', function() {
+                const movieName = inputSearch.value.toLowerCase();
+
+                for (let i = 0; i < responce.length; i++) {
+                    if (movieName === responce[i].name.toLowerCase()) {
+                        const searchedmovie = document.querySelector('.section1half')
+                        searchedmovie.innerHTML = `
+                            <div class="film-about">
+                                <img src="${responce[i].image.medium}" class="main-img">
+                                <div>
+                                    <h1>${responce[i].name}</h1>
+                                    <p>${responce[i].premiered}</p>
+                                    <p class="description">${responce[i].summary}</p>
+                                    <button><a href="https://www.youtube.com/" style="text-decoration: none; color: black;">Watch</a></button>
+                                </div>
+                            </div>
+                        `
+
+                        console.log(searchedmovie)
+                    }
+                }
+            })
+        }
+
+        series()
+    </script>
+</body>
+</html>

@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieDb - Movies, TV and Celebrities</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+
+            .header{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                background-color: black;
+                padding: 10px 30px;
+
+                #burger{
+                    display: none;
+                }
+
+                #account{
+                    display: none;
+                }
+
+                .header1{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 30px;
+                    
+                    .search{
+                        background-color: rgb(28, 28, 28);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: 6px 10px;
+                        border: 1px rgb(55, 55, 55) solid;
+                        border-radius: 5px;
+
+                        input{
+                            margin-left: 20px;
+                            background-color: rgb(28, 28, 28);
+                            border: none;
+                            width: 530px;
+                            color: rgb(180, 180, 180);
+                            font-size: 15px;
+                        }
+                    }
+
+                    .menu{
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        
+                        a{
+                            color: rgba(255, 255, 255, 0.777);
+                            text-decoration: none;
+                            font-size: 14px;
+                        }
+
+                        a:hover{
+                            text-decoration: underline;
+                            color: white;
+                        }
+                    }
+                }
+
+                .header2{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    .register{
+                        background-color: black;
+                        padding: 5px 20px;
+                        border: none;
+                        
+                        a{
+                            color: white;
+                            font-size: 14px;
+                            font-weight: 700;
+                        }
+                    }
+
+                    .login{
+                        background-color: rgb(255, 191, 0);
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+
+                        a{
+                            color: black;
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .login:hover{
+                        background-color: rgb(212, 160, 1);
+                    }
+
+                    .logout{
+                        background-color: rgb(255, 191, 0);
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+                        display: none;
+
+                        a{
+                            color: black;
+                            font-weight: 700;
+                            font-size: 14px;
+                        }
+                    }
+
+                    .logout:hover{
+                        background-color: rgb(212, 160, 1);
+                    }
+                }
+            }
+
+            .section1{
+                display: flex;
+                flex-direction: row;
+                padding: 30px 120px;
+                background-color: rgb(28, 28, 28);
+                height: 600px;
+                gap: 30px;
+
+                .section1-main{
+                    width: 1000px;
+                    height: 510px;
+
+                    .background-img{
+                        width: 1000px;
+                        border-radius: 5px;
+                        position: absolute;
+                        top: 93px;
+                        z-index: 0;
+                        opacity: 90%;
+                    }
+
+                    .gradient-overlay {
+                        z-index: -1000;
+                        position: absolute;
+                        width: 1000px;
+                        height: 100%;
+                        left: -80px;
+                        bottom: -60px;
+                        border-bottom-left-radius: 10px;
+                        border-bottom-right-radius: 10px;
+                        background: linear-gradient(to top, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.818), transparent);
+                    }
+
+                    .film-about{
+                        display: flex;
+                        flex-direction: row;
+                        z-index: 10000;
+                        position: absolute;
+                        top: 300px;
+                        left: 200px;
+
+
+                        .main-img{
+                            width: 200px;
+                            border: 5px white solid;
+                            margin-right: 30px;
+                        }
+
+                        .mark{
+                            color: white;
+                            font-size: 25px;
+                            margin-bottom: 0;
+                        }
+
+                        h1{
+                            font-size: 50px;
+                            color: white;
+                            margin-top: 10px;
+                            margin-bottom: 0;
+                            font-weight: 100;
+                            width: 700px;
+                        }
+
+                        h1:hover{
+                            text-decoration: underline;
+                        }
+
+                        .description{
+                            margin-top: 10px;
+                            color: white;
+                            width: 600px;
+                            line-height: 25px;
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
+
+            .section1half{
+                background-color: rgb(28, 28, 28);
+                padding: 10px 120px;
+                gap: 30px;
+
+                .film-about{
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: 30px;
+                    color: white;
+
+                    h1{
+                        font-size: 40px;
+                        color: white;
+                        font-weight: 700;
+                    }
+
+                    .description{
+                        font-size: 20px;
+                        width: 600px;
+                    }
+
+                    button{
+                        background-color: rgb(255, 191, 0);
+                        font-size: 15px;
+                        padding: 10px 20px;
+                        font-weight: 700;
+                        border: none;
+                        border-radius: 5px;
+                    }
+                }
+                
+
+                img{
+                    width: 200px;
+                    margin-right: 30px;
+                }
+            }
+
+            .section2{
+                background-color: rgb(28, 28, 28);
+                padding: 40px 120px;
+
+                h1{
+                    margin: 0;
+                    color: white;
+                    font-size: 30px;
+                    font-weight: 100;
+                    border-left: 5px rgb(255, 191, 0) solid;
+                    padding-left: 10px;
+                }
+
+                h1:hover{
+                    text-decoration: underline;
+                }
+
+                p{
+                    color: white;
+                }
+
+                .section2-container{
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    transition: transform 0.4s ease-in-out;
+                    overflow-x: scroll;
+                    scroll-snap-type: x mandatory;
+
+                    div{
+                        object-fit: cover;
+                        width: 100vw;
+                        height: auto;
+                        scroll-snap-align: center;
+                    }
+                }
+            }
+
+            .section3{
+                background-color: rgb(28, 28, 28);
+                padding: 40px 120px;
+
+                h1{
+                    margin: 0;
+                    color: white;
+                    font-size: 30px;
+                    font-weight: 100;
+                    border-left: 5px rgb(255, 191, 0) solid;
+                    padding-left: 10px;
+                }
+
+                h1:hover{
+                    text-decoration: underline;
+                }
+
+                p{
+                    color: white;
+                }
+
+                .section3-container{
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    transition: transform 0.4s ease-in-out;
+                    overflow-x: scroll;
+                    scroll-snap-type: x mandatory;
+
+                    div{
+                        object-fit: cover;
+                        width: 100vw;
+                        height: auto;
+                        scroll-snap-align: center;
+                    }
+                }
+            }
+
+            .section4{
+                background-color: rgb(28, 28, 28);
+                padding: 40px 120px;
+
+                h1{
+                    margin: 0;
+                    color: white;
+                    font-size: 30px;
+                    font-weight: 100;
+                    border-left: 5px rgb(255, 191, 0) solid;
+                    padding-left: 10px;
+                }
+
+                h1:hover{
+                    text-decoration: underline;
+                }
+                
+
+                .section4-container{
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    transition: transform 0.4s ease-in-out;
+                    overflow-x: scroll;
+                    scroll-snap-type: x mandatory;
+
+                    div{
+                        object-fit: cover;
+                        width: 100vw;
+                        height: auto;
+                        scroll-snap-align: center;
+                    }
+                }
+            }
+
+            .section5{
+                background-color: rgb(28, 28, 28);
+                padding: 40px 120px;
+
+                h1{
+                    margin: 0;
+                    color: white;
+                    font-size: 30px;
+                    font-weight: 100;
+                    border-left: 5px rgb(255, 191, 0) solid;
+                    padding-left: 10px;
+                }
+
+                h1:hover{
+                    text-decoration: underline;
+                }
+                
+
+                .section5-container{
+                    margin-top: 30px;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 30px;
+                    transition: transform 0.4s ease-in-out;
+                    overflow-x: scroll;
+                    scroll-snap-type: x mandatory;
+
+                    div{
+                        object-fit: cover;
+                        width: 100vw;
+                        height: auto;
+                        scroll-snap-align: center;
+                    }
+                }
+            }
+
+            .footer {
+                background-color: rgb(28, 28, 28);
+                padding: 200px 120px 20px 120px;
+
+                .footer1{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+
+                    ul{
+                        margin: 0;
+                        list-style: none;
+                        padding: 0;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+
+                        li{
+                            color: rgb(255, 191, 0);
+                            font-size: 15px;
+                            cursor: pointer;
+                        }
+                    }
+
+                    p{
+                        color: rgb(180, 180, 180);
+                        font-size: 14px;
+                    }
+                }
+
+                .hr{
+                    margin: 0;
+                }
+
+                .footer2{
+                    color: rgb(180, 180, 180);
+                    font-size: 14px;
+                    margin-top: 30px;
+                }
+
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            body{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: sans-serif;
+
+                .header{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    background-color: black;
+                    padding: 10px 30px;
+
+
+                    .logo{
+                        width: 60px;
+                    }
+
+                    #burger{
+                        display: block;
+                    }
+
+                    #account{
+                        display: block;
+                        margin-right: 20px;
+                    }
+
+                    .header1{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: 20px;
+                        
+                        .search{
+                            display: none;
+                        }
+
+                        .menu{
+                            position: absolute;
+                            background-color: black;
+                            top: 50px;
+                            left: 80px;
+                            padding: 20px;
+                            gap: 30px;
+                            display: none;
+                            z-index: 1000000;
+                            
+                            a{
+                                color: rgba(255, 255, 255, 0.777);
+                                text-decoration: none;
+                                font-size: 14px;
+                            }
+
+                            a:hover{
+                                text-decoration: underline;
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .header2{
+                        align-items: center;
+                        gap: 20px;
+                        position: absolute;
+                        top: 50px;
+                        right: 0;
+                        background-color: black;
+                        padding: 20px;
+                        display: none;
+                        z-index: 1000000;
+
+                        .register{
+                            background-color: black;
+                            padding: 5px 20px;
+                            border: none;
+                            
+                            a{
+                                color: white;
+                                font-size: 14px;
+                                font-weight: 700;
+                            }
+                        }
+
+                        .login{
+                            background-color: rgb(255, 191, 0);
+                            padding: 10px 20px;
+                            border: none;
+                            border-radius: 5px;
+
+                            a{
+                                color: black;
+                                font-weight: 700;
+                                font-size: 14px;
+                            }
+                        }
+
+                        .login:hover{
+                            background-color: rgb(212, 160, 1);
+                        }
+                    }
+                }
+
+                .section1{
+                    display: flex;
+                    flex-direction: row;
+                    padding: 15px;
+                    background-color: rgb(28, 28, 28);
+                    height: 200px;
+                    gap: 0px;
+
+                    .section1-main{
+                        width: 100vw;
+
+                        .background-img{
+                            width: 92vw;
+                            border-radius: 5px;
+                            position: absolute;
+                            top: 70px;
+                            z-index: 0;
+                            opacity: 90%;
+                        }
+
+                        .gradient-overlay {
+                            z-index: -1000;
+                            position: absolute;
+                            width: 92vw;
+                            height: 100%;
+                            left: -40px;
+                            bottom: -70px;
+                            border-bottom-left-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                            background: linear-gradient(to top, rgb(0, 0, 0) 30%, rgba(0, 0, 0, 0.818), transparent);
+                        }
+
+                        .film-about{
+                            display: flex;
+                            flex-direction: row;
+                            z-index: 10000;
+                            position: absolute;
+                            top: 100px;
+                            left: 55px;
+
+
+                            .main-img{
+                                display: none;
+                            }
+
+                            .mark{
+                                color: white;
+                                font-size: 25px;
+                                margin-bottom: 0;
+                            }
+
+                            h1{
+                                font-size: 20px;
+                                color: white;
+                                margin-top: 10px;
+                                margin-bottom: 0;
+                                font-weight: 100;
+                                width: 300px;
+                            }
+
+                            .description{
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .section1-notmain{
+                        display: none;
+                    }
+                }
+
+                .section2{
+                    background-color: rgb(28, 28, 28);
+                    padding: 40px 15px;
+
+
+                    h1{
+                        margin: 0;
+                        color: white;
+                        font-size: 30px;
+                        font-weight: 100;
+                        border-left: 5px rgb(255, 191, 0) solid;
+                        padding-left: 10px;
+                    }
+
+                    p{
+                        color: white;
+                    }
+
+                    .section2-container{
+                        margin-top: 30px;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        transition: transform 0.4s ease-in-out;
+                        overflow-x: scroll;
+                        scroll-snap-type: x mandatory;
+
+                        div{
+                            object-fit: cover;
+                            width: 100vw;
+                            height: auto;
+                            scroll-snap-align: center;
+                        }
+                    }
+                }
+
+                .section3{
+                    background-color: rgb(28, 28, 28);
+                    padding: 40px 15px;
+
+
+                    h1{
+                        margin: 0;
+                        color: white;
+                        font-size: 30px;
+                        font-weight: 100;
+                        border-left: 5px rgb(255, 191, 0) solid;
+                        padding-left: 10px;
+                    }
+
+                    p{
+                        color: white;
+                    }
+
+                    .section3-container{
+                        margin-top: 30px;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        transition: transform 0.4s ease-in-out;
+                        overflow-x: scroll;
+                        scroll-snap-type: x mandatory;
+
+                        div{
+                            object-fit: cover;
+                            width: 100vw;
+                            height: auto;
+                            scroll-snap-align: center;
+                        }
+                    }
+                }
+
+                .section4{
+                    background-color: rgb(28, 28, 28);
+                    padding: 40px 15px;
+
+
+                    h1{
+                        margin: 0;
+                        color: white;
+                        font-size: 30px;
+                        font-weight: 100;
+                        border-left: 5px rgb(255, 191, 0) solid;
+                        padding-left: 10px;
+                    }
+
+                    .section4-container{
+                        margin-top: 30px;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        transition: transform 0.4s ease-in-out;
+                        overflow-x: scroll;
+                        scroll-snap-type: x mandatory;
+
+                        div{
+                            object-fit: cover;
+                            width: 100vw;
+                            height: auto;
+                            scroll-snap-align: center;
+                        }
+                    }
+                }
+
+                .section5{
+                    background-color: rgb(28, 28, 28);
+                    padding: 40px 15px;
+
+
+                    h1{
+                        margin: 0;
+                        color: white;
+                        font-size: 30px;
+                        font-weight: 100;
+                        border-left: 5px rgb(255, 191, 0) solid;
+                        padding-left: 10px;
+                    }
+
+                    .section5-container{
+                        margin-top: 30px;
+                        display: flex;
+                        flex-direction: row;
+                        gap: 30px;
+                        transition: transform 0.4s ease-in-out;
+                        overflow-x: scroll;
+                        scroll-snap-type: x mandatory;
+
+                        div{
+                            object-fit: cover;
+                            width: 100vw;
+                            height: auto;
+                            scroll-snap-align: center;
+                        }
+                    }
+                }
+
+                .footer {
+                    background-color: rgb(28, 28, 28);
+                    padding: 200px 15px 20px 15px;
+
+                    .footer1{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+
+                        ul{
+                            margin: 0;
+                            list-style: none;
+                            padding: 0;
+                            display: flex;
+                            flex-direction: row;
+                            gap: 30px;
+
+                            li{
+                                color: rgb(255, 191, 0);
+                                font-size: 15px;
+                                cursor: pointer;
+                            }
+                        }
+
+                        p{
+                            color: rgb(180, 180, 180);
+                            font-size: 14px;
+                        }
+                    }
+
+                    .hr{
+                        margin: 0;
+                    }
+
+                    .footer2{
+                        color: rgb(180, 180, 180);
+                        font-size: 14px;
+                        margin-top: 30px;
+                    }
+
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header1">
+            <a href="homepage.html"><img src="images/logo.svg" alt="" width="80px"  class="logo"></a>
+
+            <div class="search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="rgb(180, 180, 180)" class="bi bi-search" viewBox="0 0 16 16" id="search-btn">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+                <input type="text" placeholder="Search for movies, tv shows and people..." class="input-search">
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="white" class="bi bi-list" viewBox="0 0 16 16" id="burger">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+            <div class="menu">
+                <a href="movies.html">Movies</a>
+                <a href="series.html">Series</a>
+                <a href="actors.html">People</a>
+            </div>
+        </div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16" id="account">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+        </svg>
+        <div class="header2">
+            <button class="register"><a href="register.html" style="text-decoration: none;">Register</a></button>
+            <button class="login"><a href="login.html" style="text-decoration: none;">Login</a></button>
+            <button class="logout"><a href="#" style="text-decoration: none;">Logout</a></button>
+        </div>
+    </header>
+
+    <section class="section1">
+        <div class="section1-main"></div>
+        <div class="section1-notmain"></div>
+    </section>
+
+    <div class="section1half"></div>
+
+    <section class="section2">
+        <h1><a href="./movies.html" style="text-decoration: none; color: white;">Now playing ></a></h1>
+        <p>Movies that are currently playing in cinemas.</p>
+
+        <div class="section2-container"></div>
+    </section>
+
+    <section class="section3">
+        <h1><a href="./series.html" style="text-decoration: none; color: white;">Trending Series ></a></h1>
+        <p>Currently trending Series</p>
+
+        <div class="section3-container"></div>
+    </section>
+
+    <section class="section4">
+        <h1><a href="./movies.html" style="text-decoration: none; color: white;">Top rated movies ></a></h1>
+
+        <div class="section4-container"></div>
+    </section>
+
+    <section class="section5">
+        <h1><a href="./actors.html" style="text-decoration: none; color: white;">Trending Actors ></a></h1>
+
+        <div class="section5-container"></div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer1">
+            <ul>
+                <li>About Us</li>
+                <li>Terms of Service</li>
+                <li>Privacy Policy</li>
+                <li>Contact Us</li>
+            </ul>
+            <p>We Are The Database</p>
+        </div>
+        <hr class="hr">
+        <div class="footer2">
+            <p>Copyright © 2025 MovieDb, All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        const burger = document.getElementById('burger')
+        const menu = document.querySelector('.menu')
+
+        burger.addEventListener('click', function() {
+            if (menu.style.display === "none") {
+                menu.style.display = 'block';
+                menu.style.display = 'flex';
+                menu.style.flexDirection = 'column';
+
+            } else{
+                menu.style.display = 'none'
+            }
+        })
+
+        const account = document.getElementById('account');
+        const header2 = document.querySelector('.header2');
+
+        account.addEventListener('click', function() {
+            if (header2.style.display === 'none'){
+                header2.style.display = 'block';
+                header2.style.display = 'flex';
+                header2.style.flexDirection = 'column';
+            } else {
+                header2.style.display = 'none'
+            }
+        })
+        
+        const api = 'https://jsonfakery.com/movies/paginated?limit=10&page=';
+
+        async function movies() {
+            const promise = await fetch(api);
+            const process = await promise.json();
+            const data = process.data
+            console.log(process.data)
+
+
+            const main1 = document.querySelector('.section1-main')
+            main1.innerHTML = `
+                <img src="${data[0].backdrop_path}" class="background-img">
+                <div class="film-about">
+                    <img src="${data[0].poster_path}" class="main-img">
+                    <div class="gradient-overlay"></div>
+                    <div>
+                        <p class="mark">${data[0].vote_average} / 10</p>
+                        <h1>${data[0].original_title}</h1>
+                        <p class="description">${data[0].overview}</p>
+                    </div>
+                </div>
+            `;
+
+
+            const main2 = document.querySelector('.section1-notmain');
+            main2.innerHTML =  `
+                <p style="color: white; font-weight: 700; font-size: 18px; margin-top: 0;">Up next</p>
+                <div>
+                    <img src="${data[1].backdrop_path}" style="width: 200px; border-radius: 5px;">
+                    <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 15px;">${data[1].original_title}</p>
+                    <p style="margin: 0;color:white; font-size: 14px">${data[1].vote_average} / 10</p>
+                </div>
+                <div style="margin-top: 20px">
+                    <img src="${data[2].backdrop_path}" style="width: 200px; border-radius: 5px;">
+                    <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 15px;">${data[2].original_title}</p>
+                    <p style="margin: 0;color:white; font-size: 14px">${data[2].vote_average} / 10</p>
+                </div>
+                <div style="margin-top: 20px">
+                    <img src="${data[3].backdrop_path}" style="width: 200px; border-radius: 5px;">
+                    <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 15px;">${data[3].original_title}</p>
+                    <p style="margin: 0;color:white; font-size: 14px">${data[3].vote_average} / 10</p>
+                </div>
+            `;
+
+            const section2 = document.querySelector('.section2-container')
+            for (let i=0; i< 11; i++){
+                section2.innerHTML += `
+                    <div>
+                        <img src="${data[i].poster_path}" style="width: 200px; border-radius: 5px;">
+                        <p style="margin: 5px 0;color:white; font-size: 17px">${data[i].vote_average} / 10</p>
+                        <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 16px;">${data[i].original_title}</p>
+                    </div>
+                `
+            }
+            
+            const section4 = document.querySelector('.section4-container')
+            for (let i=0; i< data.length; i++ ){
+                if (data[i].vote_average >= 7){
+                    section4.innerHTML += `
+                        <div>
+                            <img src="${data[i].poster_path}" style="width: 200px; border-radius: 5px;">
+                            <p style="margin: 5px 0;color:white; font-size: 17px">${data[i].vote_average} / 10</p>
+                            <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 16px;">${data[i].original_title}</p>
+                        </div>
+                    `
+                }
+            }
+
+            const searchBtn = document.getElementById('search-btn');
+            const inputSearch = document.querySelector('.input-search')
+
+            searchBtn.addEventListener('click', function() {
+                const movieName = inputSearch.value.toLowerCase();
+
+                const section1 = document.querySelector('.section1');
+                section1.style.display = 'none';
+
+                for (let i = 0; i < data.length; i++) {
+                    if (movieName === data[i].original_title.toLowerCase()) {
+                        const searchedmovie = document.querySelector('.section1half')
+                        searchedmovie.innerHTML = `
+                            <div class="film-about">
+                                <img src="${data[i].poster_path}" class="main-img">
+                                <div>
+                                    <h1>${data[i].original_title}</h1>
+                                    <p>${data[i].release_date}</p>
+                                    <p class="description">${data[i].overview}</p>
+                                    <button><a href="https://www.youtube.com/" style="text-decoration: none; color: black;">Watch</a></button>
+                                </div>
+                            </div>
+                        `
+
+                    }
+                }
+            })
+        }
+
+        movies()
+
+        const api1 = 'https://api.tvmaze.com/shows?page=0';
+
+        async function series(){
+            const promise = await fetch(api1);
+            const responce = await promise.json();
+            console.log(responce);
+
+            for (let i=0; i<11; i++) {
+                const section3 = document.querySelector('.section3-container')
+
+                section3.innerHTML += `
+                    <div>
+                        <img src="${responce[i].image.medium}" style="width: 200px; border-radius: 5px;">
+                        <p style="margin: 5px 0;color:white; font-size: 17px">${responce[i].rating.average} / 10</p>
+                        <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 16px;">${responce[i].name}</p>
+                    </div>
+                `
+            }
+
+
+            const searchBtn = document.getElementById('search-btn');
+            const inputSearch = document.querySelector('.input-search')
+
+            searchBtn.addEventListener('click', function() {
+                const movieName = inputSearch.value.toLowerCase();
+
+                const section1 = document.querySelector('.section1');
+                section1.style.display = 'none';
+
+                for (let i = 0; i < responce.length; i++) {
+                    if (movieName === responce[i].name.toLowerCase()) {
+                        const searchedmovie = document.querySelector('.section1half')
+                        searchedmovie.innerHTML = `
+                            <div class="film-about">
+                                <img src="${responce[i].image.medium}" class="main-img">
+                                <div>
+                                    <h1>${responce[i].name}</h1>
+                                    <p>${responce[i].premiered}</p>
+                                    <p class="description">${responce[i].summary}</p>
+                                    <button><a href="https://www.youtube.com/" style="text-decoration: none; color: black;">Watch</a></button>
+                                </div>
+                            </div>
+                        `
+
+                        console.log(searchedmovie)
+                    }
+                }
+            })
+        }
+
+        series()
+
+        const api2 = 'https://api.themoviedb.org/3/person/popular?api_key=90e26bcfd938b2590ee60b77c6847836&page=1';
+        const imageBase = "https://image.tmdb.org/t/p/w500"
+
+        async function actor() {
+            const promise = await fetch(api2);
+            const responce = await promise.json();
+            const data = responce.results
+            console.log(data);
+
+            for (let i=0; i<11; i++) {
+                const section5 = document.querySelector('.section5-container')
+
+                section5.innerHTML += `
+                    <div>
+                        <img src="${imageBase + data[i].profile_path}" style="width: 200px; border-radius: 10px;">
+                        <p style="color: white; margin: 6px 0px; width: 200px; font-weight: 600; font-size: 16px;">${data[i].original_name}</p>
+                    </div>
+                `
+            }
+        }
+
+        actor()
+        
+        window.onload = function () {
+            
+            const isLogin = localStorage.getItem("isLogin") || false
+
+            const loginBtn = document.querySelector('.login');
+            const logoutBtn = document.querySelector('.logout');
+            const register = document.querySelector('.register');
+
+            if (isLogin === "true") {
+                loginBtn.style.display = "none";
+                register.style.display = 'none';
+                logoutBtn.style.display = "block";
+            } else {
+                loginBtn.style.display = "inline-block";
+                logoutBtn.style.display = "none";
+            }
+
+            logoutBtn.addEventListener("click", function () {
+                loginBtn.style.display = "block";
+                register.style.display = 'block';
+                logoutBtn.style.display = "none";
+                localStorage.clear()
+            });
+        };
+    </script>
+</body>
+</html>
